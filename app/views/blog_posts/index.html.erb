@@ -1,0 +1,11 @@
+<h1><%= "Index for blog_posts" %></h1>
+
+<hr />
+<% for blog_post in @blog_posts %>
+<strong><%= link_to blog_post.title, :action => 'show', :id => blog_post.id %></strong> |
+<%= link_to "edit", :action => 'edit', :id => blog_post.id  %>  |
+<%= link_to "destroy", blog_post_path(blog_post), :method => :delete , :confirm => "Are you sure?" %>  <br />
+<hr />
+<% end %>
+
+**<%= link_to "Create new #{@blog_posts[0].class}", new_blog_post_path %>**
