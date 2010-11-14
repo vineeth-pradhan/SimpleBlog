@@ -1,0 +1,395 @@
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (67.5ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `schema_migrations`[0m
+  [4;35;1mSQL (142.8ms)[0m   [0mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateBlogPosts (20100914221354)
+  [4;36;1mSQL (91.7ms)[0m   [0;1mCREATE TABLE `blog_posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(60) NOT NULL, `body` text DEFAULT '', `author_id` int(11), `editor_id` int(11), `comment_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (24.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100914221354')[0m
+Migrating to CreateUsers (20100914221401)
+  [4;36;1mSQL (104.9ms)[0m   [0;1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `username` varchar(100) NOT NULL, `password` varchar(100) NOT NULL, `first_name` varchar(100), `last_name` varchar(100), `email` varchar(255) NOT NULL, `comment_id` int(11), `author_id` int(11), `editor_id` int(11), `is_admin` tinyint(1) DEFAULT 0 NOT NULL, `resource_id` int(11), `resource_key` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (28.9ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100914221401')[0m
+Migrating to CreateComments (20100914221408)
+  [4;36;1mSQL (99.5ms)[0m   [0;1mCREATE TABLE `comments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `content` text NOT NULL, `user_id` int(11), `blog_post_id` int(11) NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (32.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100914221408')[0m
+Migrating to CreateCategories (20100914221417)
+  [4;36;1mSQL (97.6ms)[0m   [0;1mCREATE TABLE `categories` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(50) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (33.7ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100914221417')[0m
+Migrating to CreateTags (20100914221424)
+  [4;36;1mSQL (95.8ms)[0m   [0;1mCREATE TABLE `tags` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(50), `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (32.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100914221424')[0m
+Migrating to CreateCategoriesPosts (20100918210910)
+  [4;36;1mSQL (102.9ms)[0m   [0;1mCREATE TABLE `categories_posts` (`category_id` int(11), `blog_post_id` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (24.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100918210910')[0m
+Migrating to CreatePostsTags (20100918210929)
+  [4;36;1mSQL (105.4ms)[0m   [0;1mCREATE TABLE `posts_tags` (`blog_posts_id` int(11), `tags_id` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (24.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100918210929')[0m
+Migrating to CreateAuthors (20100918212423)
+  [4;36;1mSQL (103.1ms)[0m   [0;1mCREATE TABLE `authors` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `blog_post_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (24.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100918212423')[0m
+Migrating to CreateEditors (20100918212433)
+  [4;36;1mSQL (87.9ms)[0m   [0;1mCREATE TABLE `editors` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `blog_post_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (32.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100918212433')[0m
+Migrating to CreateTests (20100918220108)
+  [4;36;1mSQL (96.5ms)[0m   [0;1mCREATE TABLE `tests` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (32.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100918220108')[0m
+Migrating to CreateTest1s (20100918235955)
+  [4;36;1mSQL (95.7ms)[0m   [0;1mCREATE TABLE `test1s` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `age` int(11), `location` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (32.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100918235955')[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (3.3ms)[0m   [0mSHOW FIELDS FROM `authors`[0m
+  [4;36;1mSQL (2.8ms)[0m   [0;1mdescribe `authors`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW KEYS FROM `authors`[0m
+  [4;36;1mSQL (3.9ms)[0m   [0;1mSHOW FIELDS FROM `blog_posts`[0m
+  [4;35;1mSQL (2.7ms)[0m   [0mdescribe `blog_posts`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW KEYS FROM `blog_posts`[0m
+  [4;35;1mSQL (2.8ms)[0m   [0mSHOW FIELDS FROM `categories`[0m
+  [4;36;1mSQL (2.6ms)[0m   [0;1mdescribe `categories`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW KEYS FROM `categories`[0m
+  [4;36;1mSQL (2.6ms)[0m   [0;1mSHOW FIELDS FROM `categories_posts`[0m
+  [4;35;1mSQL (2.4ms)[0m   [0mdescribe `categories_posts`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW KEYS FROM `categories_posts`[0m
+  [4;35;1mSQL (2.9ms)[0m   [0mSHOW FIELDS FROM `comments`[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mdescribe `comments`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `comments`[0m
+  [4;36;1mSQL (2.8ms)[0m   [0;1mSHOW FIELDS FROM `editors`[0m
+  [4;35;1mSQL (3.3ms)[0m   [0mdescribe `editors`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW KEYS FROM `editors`[0m
+  [4;35;1mSQL (2.6ms)[0m   [0mSHOW FIELDS FROM `posts_tags`[0m
+  [4;36;1mSQL (2.7ms)[0m   [0;1mdescribe `posts_tags`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `posts_tags`[0m
+  [4;36;1mSQL (2.8ms)[0m   [0;1mSHOW FIELDS FROM `tags`[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mdescribe `tags`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `tags`[0m
+  [4;35;1mSQL (2.9ms)[0m   [0mSHOW FIELDS FROM `test1s`[0m
+  [4;36;1mSQL (2.6ms)[0m   [0;1mdescribe `test1s`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW KEYS FROM `test1s`[0m
+  [4;36;1mSQL (3.2ms)[0m   [0;1mSHOW FIELDS FROM `tests`[0m
+  [4;35;1mSQL (2.4ms)[0m   [0mdescribe `tests`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW KEYS FROM `tests`[0m
+  [4;35;1mSQL (3.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW KEYS FROM `users`[0m
+Unable to load test, underlying cause no such file to load -- test 
+
+ /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/usr/lib64/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:158:in `require'
+/usr/lib64/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:265:in `require_or_load'
+/usr/lib64/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:224:in `depend_on'
+/usr/lib64/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:136:in `require_dependency'
+/usr/lib64/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/usr/lib64/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/usr/lib64/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/fixtures.rb:865:in `each'
+/usr/lib64/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/usr/lib64/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/fixtures.rb:848:in `fixtures'
+./test/test_helper.rb:35
+./test/unit/category_test.rb:1:in `require'
+./test/unit/category_test.rb:1
+/usr/lib64/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `load'
+/usr/lib64/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+/usr/lib64/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `each'
+/usr/lib64/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+Unable to load test, underlying cause no such file to load -- test 
+
+ /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/usr/lib64/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:158:in `require'
+/usr/lib64/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:265:in `require_or_load'
+/usr/lib64/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:224:in `depend_on'
+/usr/lib64/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:136:in `require_dependency'
+/usr/lib64/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/usr/lib64/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/usr/lib64/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/fixtures.rb:865:in `each'
+/usr/lib64/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/usr/lib64/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/fixtures.rb:848:in `fixtures'
+./test/test_helper.rb:35
+./test/functional/customised_crud_controller_test.rb:1:in `require'
+./test/functional/customised_crud_controller_test.rb:1
+/usr/lib64/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `load'
+/usr/lib64/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+/usr/lib64/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `each'
+/usr/lib64/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM `test1s` [0m
+
+
+Processing Test1sController#create (for 0.0.0.0 at 2010-10-03 23:46:23) [POST]
+  Parameters: {"test1"=>{}}
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mTest1 Create (0.3ms)[0m   [0mINSERT INTO `test1s` (`name`, `updated_at`, `age`, `location`, `created_at`) VALUES(NULL, '2010-10-03 18:16:23', NULL, NULL, '2010-10-03 18:16:23')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (24.5ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM `test1s` [0m
+  [4;36;1mTest1 Load (0.4ms)[0m   [0;1mSELECT * FROM `test1s` WHERE (`test1s`.`id` = 980190962) [0m
+
+
+Processing Test1sController#destroy (for 0.0.0.0 at 2010-10-03 23:46:23) [DELETE]
+  Parameters: {"id"=>"980190962"}
+  [4;35;1mTest1 Load (0.6ms)[0m   [0mSELECT * FROM `test1s` WHERE (`test1s`.`id` = 980190962) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mTest1 Destroy (0.6ms)[0m   [0mDELETE FROM `test1s` WHERE `id` = 980190962[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (27.5ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mTest1 Load (0.7ms)[0m   [0mSELECT * FROM `test1s` WHERE (`test1s`.`id` = 980190962) [0m
+
+
+Processing Test1sController#edit (for 0.0.0.0 at 2010-10-03 23:46:23) [GET]
+  Parameters: {"id"=>"980190962"}
+  [4;36;1mTest1 Load (0.6ms)[0m   [0;1mSELECT * FROM `test1s` WHERE (`test1s`.`id` = 980190962) [0m
+Rendering template within layouts/test1s
+Rendering test1s/edit
+  [4;35;1mSQL (0.3ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing Test1sController#index (for 0.0.0.0 at 2010-10-03 23:46:23) [GET]
+  [4;35;1mTest1 Load (1.3ms)[0m   [0mSELECT * FROM `test1s` [0m
+Rendering template within layouts/test1s
+Rendering test1s/index
+  [4;36;1mSQL (0.3ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing Test1sController#new (for 0.0.0.0 at 2010-10-03 23:46:23) [GET]
+Rendering template within layouts/test1s
+Rendering test1s/new
+  [4;36;1mSQL (0.2ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mTest1 Load (0.6ms)[0m   [0;1mSELECT * FROM `test1s` WHERE (`test1s`.`id` = 980190962) [0m
+
+
+Processing Test1sController#show (for 0.0.0.0 at 2010-10-03 23:46:23) [GET]
+  Parameters: {"id"=>"980190962"}
+  [4;35;1mTest1 Load (0.7ms)[0m   [0mSELECT * FROM `test1s` WHERE (`test1s`.`id` = 980190962) [0m
+Rendering template within layouts/test1s
+Rendering test1s/show
+  [4;36;1mSQL (0.3ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mTest1 Load (0.6ms)[0m   [0;1mSELECT * FROM `test1s` WHERE (`test1s`.`id` = 980190962) [0m
+
+
+Processing Test1sController#update (for 0.0.0.0 at 2010-10-03 23:46:23) [PUT]
+  Parameters: {"id"=>"980190962", "test1"=>{}}
+  [4;35;1mTest1 Load (0.6ms)[0m   [0mSELECT * FROM `test1s` WHERE (`test1s`.`id` = 980190962) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mROLLBACK[0m
+Unable to load test, underlying cause no such file to load -- test 
+
+ /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/usr/lib64/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:158:in `require'
+/usr/lib64/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:265:in `require_or_load'
+/usr/lib64/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:224:in `depend_on'
+/usr/lib64/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:136:in `require_dependency'
+/usr/lib64/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/usr/lib64/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/usr/lib64/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/fixtures.rb:865:in `each'
+/usr/lib64/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/usr/lib64/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/fixtures.rb:848:in `fixtures'
+./test/test_helper.rb:35
+./test/unit/category_test.rb:1:in `require'
+./test/unit/category_test.rb:1
+/usr/lib64/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `load'
+/usr/lib64/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+/usr/lib64/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `each'
+/usr/lib64/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+Unable to load test, underlying cause no such file to load -- test 
+
+ /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/usr/lib64/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:158:in `require'
+/usr/lib64/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:265:in `require_or_load'
+/usr/lib64/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:224:in `depend_on'
+/usr/lib64/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:136:in `require_dependency'
+/usr/lib64/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/fixtures.rb:853:in `try_to_load_dependency'
+/usr/lib64/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/fixtures.rb:868:in `require_fixture_classes'
+/usr/lib64/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/fixtures.rb:865:in `each'
+/usr/lib64/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/fixtures.rb:865:in `require_fixture_classes'
+/usr/lib64/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/fixtures.rb:848:in `fixtures'
+./test/test_helper.rb:35
+./test/functional/customised_crud_controller_test.rb:1:in `require'
+./test/functional/customised_crud_controller_test.rb:1
+/usr/lib64/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `load'
+/usr/lib64/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+/usr/lib64/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `each'
+/usr/lib64/ruby/gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM `test1s` [0m
+
+
+Processing Test1sController#create (for 0.0.0.0 at 2010-10-03 23:47:29) [POST]
+  Parameters: {"test1"=>{}}
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mTest1 Create (0.3ms)[0m   [0mINSERT INTO `test1s` (`name`, `updated_at`, `age`, `location`, `created_at`) VALUES(NULL, '2010-10-03 18:17:29', NULL, NULL, '2010-10-03 18:17:29')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (22.7ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM `test1s` [0m
+  [4;36;1mTest1 Load (0.4ms)[0m   [0;1mSELECT * FROM `test1s` WHERE (`test1s`.`id` = 980190962) [0m
+
+
+Processing Test1sController#destroy (for 0.0.0.0 at 2010-10-03 23:47:29) [DELETE]
+  Parameters: {"id"=>"980190962"}
+  [4;35;1mTest1 Load (0.3ms)[0m   [0mSELECT * FROM `test1s` WHERE (`test1s`.`id` = 980190962) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mTest1 Destroy (0.3ms)[0m   [0mDELETE FROM `test1s` WHERE `id` = 980190962[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (22.5ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mTest1 Load (0.4ms)[0m   [0mSELECT * FROM `test1s` WHERE (`test1s`.`id` = 980190962) [0m
+
+
+Processing Test1sController#edit (for 0.0.0.0 at 2010-10-03 23:47:29) [GET]
+  Parameters: {"id"=>"980190962"}
+  [4;36;1mTest1 Load (0.4ms)[0m   [0;1mSELECT * FROM `test1s` WHERE (`test1s`.`id` = 980190962) [0m
+Rendering template within layouts/test1s
+Rendering test1s/edit
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+
+
+Processing Test1sController#index (for 0.0.0.0 at 2010-10-03 23:47:29) [GET]
+  [4;35;1mTest1 Load (0.3ms)[0m   [0mSELECT * FROM `test1s` [0m
+Rendering template within layouts/test1s
+Rendering test1s/index
+  [4;36;1mSQL (0.2ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+
+
+Processing Test1sController#new (for 0.0.0.0 at 2010-10-03 23:47:29) [GET]
+Rendering template within layouts/test1s
+Rendering test1s/new
+  [4;36;1mSQL (0.4ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mTest1 Load (0.4ms)[0m   [0;1mSELECT * FROM `test1s` WHERE (`test1s`.`id` = 980190962) [0m
+
+
+Processing Test1sController#show (for 0.0.0.0 at 2010-10-03 23:47:29) [GET]
+  Parameters: {"id"=>"980190962"}
+  [4;35;1mTest1 Load (0.3ms)[0m   [0mSELECT * FROM `test1s` WHERE (`test1s`.`id` = 980190962) [0m
+Rendering template within layouts/test1s
+Rendering test1s/show
+  [4;36;1mSQL (0.2ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mTest1 Load (0.3ms)[0m   [0;1mSELECT * FROM `test1s` WHERE (`test1s`.`id` = 980190962) [0m
+
+
+Processing Test1sController#update (for 0.0.0.0 at 2010-10-03 23:47:29) [PUT]
+  Parameters: {"id"=>"980190962", "test1"=>{}}
+  [4;35;1mTest1 Load (0.3ms)[0m   [0mSELECT * FROM `test1s` WHERE (`test1s`.`id` = 980190962) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m

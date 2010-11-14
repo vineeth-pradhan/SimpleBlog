@@ -1,0 +1,21 @@
+<h1>User#show</h1>
+<p>
+Username: <%= @record.username %>
+</p>
+<p>
+Password: <%= @record.password %>
+</p>
+<p>
+First Name: <%= @record.first_name %>
+</p>
+<p>
+Last Name: <%= @record.last_name %>
+</p>
+<p>
+Email: <%= @record.email %>
+</p>
+<p>
+Is admin?: <%= @record.is_admin%>
+</p>
+
+<%= link_to("Back", users_path) %>

@@ -9,22 +9,36 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100918212433) do
+ActiveRecord::Schema.define(:version => 20101003200414) do
 
   create_table "authors", :force => true do |t|
-    t.integer  "blog_post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "blog_posts", :force => true do |t|
-    t.string   "title",      :limit => 60, :default => "", :null => false
+    t.string   "title",      :limit => 60, :null => false
     t.text     "body"
     t.integer  "author_id"
     t.integer  "editor_id"
     t.integer  "comment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "blog_posts_categories", :id => false, :force => true do |t|
+    t.integer "category_id"
+    t.integer "blog_post_id"
+  end
+
+  create_table "blog_posts_editors", :id => false, :force => true do |t|
+    t.integer "blog_post_id"
+    t.integer "editor_id"
+  end
+
+  create_table "blog_posts_tags", :id => false, :force => true do |t|
+    t.integer "blog_posts_id"
+    t.integer "tags_id"
   end
 
   create_table "categories", :force => true do |t|
@@ -34,28 +48,17 @@ ActiveRecord::Schema.define(:version => 20100918212433) do
     t.datetime "updated_at"
   end
 
-  create_table "categories_posts", :id => false, :force => true do |t|
-    t.integer "category_id"
-    t.integer "blog_post_id"
-  end
-
   create_table "comments", :force => true do |t|
     t.text     "content",      :null => false
-    t.integer  "user_id",      :null => false
+    t.integer  "user_id"
     t.integer  "blog_post_id", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "editors", :force => true do |t|
-    t.integer  "blog_post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "posts_tags", :id => false, :force => true do |t|
-    t.integer "blog_posts_id"
-    t.integer "tags_id"
   end
 
   create_table "tags", :force => true do |t|
@@ -66,17 +69,17 @@ ActiveRecord::Schema.define(:version => 20100918212433) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "username",     :limit => 100, :default => "",    :null => false
-    t.string   "password",     :limit => 100,                    :null => false
-    t.string   "first_name",   :limit => 100
-    t.string   "last_name",    :limit => 100
-    t.string   "email",                                          :null => false
+    t.string   "username",      :limit => 100,                    :null => false
+    t.string   "password",      :limit => 100,                    :null => false
+    t.string   "first_name",    :limit => 100
+    t.string   "last_name",     :limit => 100
+    t.string   "email",                                           :null => false
     t.integer  "comment_id"
     t.integer  "author_id"
     t.integer  "editor_id"
-    t.boolean  "is_admin",                    :default => false, :null => false
+    t.boolean  "is_admin",                     :default => false, :null => false
     t.integer  "resource_id"
-    t.string   "resource_key"
+    t.string   "resource_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

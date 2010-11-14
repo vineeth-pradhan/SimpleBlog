@@ -1,7 +1,6 @@
 class CreateAuthors < ActiveRecord::Migration
   def self.up
     create_table :authors do |t|
-      t.references :blog_post
       t.timestamps
     end
   end

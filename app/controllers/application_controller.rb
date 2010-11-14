@@ -7,4 +7,15 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+
+  protected
+
+  def set_current_user(user)
+    session[:user]=user
+  end
+  
+  def current_user
+    session[:user]
+  end
+
 end

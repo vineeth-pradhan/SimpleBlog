@@ -1,7 +1,15 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :test1s
-  map.resources :blog_posts
+
+  #map.resources :test1s
+  map.resources :blog_posts, :has_many => :comments
+  map.resources :customised_crud
+  map.resources :categories
+  map.resources :editors
+  map.resources :tags
+  map.resources :users
   
+  map.home "/", :controller => "sessions", :action => "new"
+  map.resources :sessions, :only => [:new, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
 

@@ -11,7 +11,7 @@ class CreateUsers < ActiveRecord::Migration
       t.references :editor
       t.boolean :is_admin, :null => false, :default => false
       t.integer :resource_id
-      t.string :resource_key
+      t.string :resource_type
 
       t.datetime :created_at
       t.datetime :updated_at
