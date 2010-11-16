@@ -1,2 +1,3 @@
 # TODO Operate on the page object
-page.alert 'THis is a test'
+page.alert 'THis aais a test'
+

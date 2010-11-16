@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101003200414) do
+ActiveRecord::Schema.define(:version => 20101003222115) do
 
   create_table "authors", :force => true do |t|
     t.datetime "created_at"
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(:version => 20101003200414) do
   end
 
   create_table "blog_posts_tags", :id => false, :force => true do |t|
-    t.integer "blog_posts_id"
-    t.integer "tags_id"
+    t.integer "blog_post_id"
+    t.integer "tag_id"
   end
 
   create_table "categories", :force => true do |t|
@@ -57,6 +57,11 @@ ActiveRecord::Schema.define(:version => 20101003200414) do
   end
 
   create_table "editors", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sessions", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end

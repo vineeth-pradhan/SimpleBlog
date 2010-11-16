@@ -11,7 +11,7 @@ end
 def load_blog_post
 puts 'Loading blog_posts...'
 FasterCSV.foreach("#{RAILS_ROOT}/lib/csv/load_blog_posts.csv") {|row|
-User.create!(:id=>row[0], :title=>row[1], :body=>row[2], :user_id=>row[3])
+BlogPost.create!(:id=>row[0],  :title=>row[1], :body=>row[2], :author_id=>row[3])
 }
 end
 
@@ -37,7 +37,25 @@ def load_comments
 end
 
 def load_blog_posts_categories
-  db=ActiveRecord::Base.connection
-  sql=db.execute("INSERT INTO blog_posts_categories VALUES()")
-  
+  db=establish_connection
+  puts 'Loading blog_posts_categories'
+  FasterCSV.foreach("#{RAILS_ROOT}/lib/csv/load_blog_posts_categories.csv") {|row|
+    db.execute("INSERT INTO blog_posts_categories(blog_post_id,category_id)\
+ VALUES(#{row[0]},#{row[1]});")
+  }
+end
+
+def load_blog_posts_tags
+  db=establish_connection
+  puts 'Loading blog_post_tags'
+  FasterCSV.foreach("#{RAILS_ROOT}/lib/csv/load_blog_posts_tags.csv") {|row|
+    db.execute("INSERT INTO blog_posts_tags(blog_post_id,tag_id)\
+ VALUES(#{row[0]},#{row[1]});")
+  }
+end
+
+private #=======================================
+
+def establish_connection
+  @db ||= ActiveRecord::Base.connection
 end

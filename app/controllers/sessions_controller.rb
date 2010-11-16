@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by_username(params[:username])
-
     if @user && @user.password == params[:password]
       set_current_user(@user)
       redirect_to :controller => "menu", :action => "list"

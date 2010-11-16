@@ -27,7 +27,18 @@ namespace :create do
     load_comments
   end
 
+  desc "Creates link between blog_posts and categories table"
+  task :blog_posts_categories => :environment do
+    load_blog_posts_categories
+  end
+
+  desc "Creates link between blog_posts and tags"
+  task :blog_posts_tags => :environment do
+    load_blog_posts_tags
+  end
+
   desc "Creates user, categories, tags, blog_posts, comments"
-  task :all => [:user,:categories,:tags,:blog_post,:comments] do
+  task :all => [:user,:categories,:tags,:blog_post,:comments,\
+      :blog_posts_categories,:blog_posts_tags] do
   end
 end

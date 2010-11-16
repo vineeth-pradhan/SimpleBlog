@@ -1,3 +1,9 @@
+create\:all=Creates user, categories, tags, blog_posts, comments
+create\:blog_post=Creates sample blog_post
+create\:categories=Creates sample categories
+create\:comments=Creates sample comments
+create\:tags=Creates sample tags
+create\:user=Creates new user, with porsamini as login, creates one user currently
 db\:abort_if_pending_migrations=Raises an error if there are pending migrations
 db\:charset=Retrieves the charset for the current environment's database
 db\:collation=Retrieves the collation for the current environment's database

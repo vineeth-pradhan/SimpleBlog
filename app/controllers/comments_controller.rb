@@ -8,10 +8,10 @@ class CommentsController < CustomisedCrudController
   end
   
   def new
-    #@blog_post = BlogPost.find(params[:blog_post_id])
-    @comment = Comment.new
+    @blog_post = BlogPost.find(params[:blog_post_id])
+    @comment = @blog_post.comments.build
     respond_to do |format|
-      format.html {redirect_to new_blog_post_url}
+      format.html
       format.js
     end
   end
@@ -19,7 +19,7 @@ class CommentsController < CustomisedCrudController
   def create
     #TODO: make the user_id not to be null, after creation of users and authentication
     @blog_post = BlogPost.find(params[:blog_post_id])
-    @comment = @blog_post.comments.new(params[:comment])
+    @comment = @blog_post.comments.build(params[:comment])
     if(@comment.save)
       respond_to do |format|
         format.html {redirect_to @blog_post, :notice => "New comment added"}
