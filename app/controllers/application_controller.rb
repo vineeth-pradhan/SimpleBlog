@@ -13,9 +13,4 @@ class ApplicationController < ActionController::Base
   def set_current_user(user)
     session[:user]=user
   end
-  
-  def current_user
-    session[:user]
-  end
-
 end

@@ -3,9 +3,6 @@
 <p>
 <%= @record.body  -%>
 </p>
-<% for category in @record.categories %>
-<%= link_to(category.title,blog_posts_path,:id=category.id)%>|
-<%end%>
 <h3><i>Comments:</i></h3>
 <div id ="show_comments">
   <hr></hr>

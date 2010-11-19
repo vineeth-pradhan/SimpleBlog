@@ -1,8 +1,10 @@
 class CustomisedCrudController < ApplicationController
   
-  def index
-
-    @records = @model_class.constantize.all
+  
+  def index(options={})
+    with_scope :find => options do
+      @records = @model_class.constantize.all  
+    end
   end
 
   def new
@@ -12,10 +14,14 @@ class CustomisedCrudController < ApplicationController
   end
 
   def create
-    @record = @model_class.constantize.new(params[:blog_post])
+    @record = @model_class.constantize.new(params[@params_name])
     if @record.save!
        flash[:notice] = "Record Created!"
-       redirect_to :action => "index" #TODO: Try this -> render index
+       if @model_class=="User"
+         redirect_to :controller=>"menu", :action => "list" #TODO: Try this -> render index
+       else
+         redirect_to :action => "index"
+       end        
     else
       flash[:error] = "New record creation failed"
        redirect_to :action => "new"
@@ -56,11 +62,22 @@ class CustomisedCrudController < ApplicationController
     end
   end
 
+  def admin_required
+    unless session[:user].is_admin
+      flash[:alert]="Need to be admin to view this page"
+      redirect_to :controller => 'menu', :action=>'list'
+    end
+  end
+  
   def login_required
     if !current_user
       flash[:notice] = "Please login!"
       redirect_to new_session_path
     end
+  end
+  
+  def current_user
+    session[:user]
   end
   
 end

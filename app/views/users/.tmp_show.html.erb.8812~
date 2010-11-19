@@ -3,7 +3,7 @@
 Username: <%= @record.username %>
 </p>
 <p>
-Password: <font color="orange"><%= "[Masked]" %></font>
+Password: <%= @record.password %>
 </p>
 <p>
 First Name: <%= @record.first_name %>
