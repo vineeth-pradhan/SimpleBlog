@@ -1,16 +1,12 @@
 class CustomisedCrudController < ApplicationController
   
   
-  def index(options={})
-    with_scope :find => options do
-      @records = @model_class.constantize.all  
-    end
+  def index
+    @records = @model_class.constantize.all
   end
 
   def new
-
     @record = @model_class.constantize.new
-    
   end
 
   def create
@@ -29,7 +25,6 @@ class CustomisedCrudController < ApplicationController
   end
 
   def show
-
     @record = @model_class.constantize.find(params[:id])
   end
 

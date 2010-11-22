@@ -1,0 +1,19 @@
+#input_form {
+	width:280px;
+	padding:50px;
+	color:#9000A1;
+	border:5px groove gray;
+	margin-left:350px;
+	margin-top:100px;
+	text-align:center;
+	font-family:"Comic Sans MS";
+}
+#common_text{
+	text-align:center;
+	margin-top:100px;
+	color:gray;
+	font-family:"Comic Sans MS";
+}
+a:link{
+	color:red
+}

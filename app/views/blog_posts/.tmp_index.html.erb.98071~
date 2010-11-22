@@ -1,4 +1,4 @@
-<div id='common_text'><h1><%= "Index for records" %></h1>
+<h1><%= "Index for records" %></h1>
 
 <hr />
 <% for record in @records -%>
@@ -9,4 +9,3 @@
 <% end -%>
 
 **<%= link_to "Create new #{@records[0].class}", new_blog_post_path -%>**
-</div>

@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
     @user = User.find_by_username(params[:username])
     if @user && @user.password == params[:password]
       set_current_user(@user)
+      flash[:notice] = "You have successfully logged in"
       redirect_to :controller => "menu", :action => "list"
     else
       flash[:alert] = "Invalid username or password"

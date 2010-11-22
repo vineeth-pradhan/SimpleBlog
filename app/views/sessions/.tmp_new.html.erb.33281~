@@ -1,4 +1,4 @@
-<div id='input_form'>
+<div id=login_form>
 <% form_tag '/sessions/create' do -%>
 <h2> Login </h2>
 Username: <%= text_field_tag :username, params[:username] -%><br/>

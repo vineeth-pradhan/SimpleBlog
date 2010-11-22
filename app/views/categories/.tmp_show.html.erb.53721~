@@ -1,0 +1,3 @@
+<h1>Category#show</h1>
+<p>Title: <%= @record.title %></p>
+<p>Description: <%= @record.description %></p>

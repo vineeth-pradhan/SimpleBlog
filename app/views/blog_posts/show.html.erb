@@ -4,7 +4,7 @@
 <%= @record.body  -%>
 </p>
 <% for category in @record.categories %>
-<%= link_to(category.title,blog_posts_path,:id=category.id)%>|
+<%= link_to(category.title,category_path(category))%>|
 <%end%>
 <h3><i>Comments:</i></h3>
 <div id ="show_comments">
