@@ -1,4 +1,0 @@
-<h1>Category#index</h1>
-<% for record in @records -%>
-  <%= link_to record.title, blog_posts_path(:category_id=>record.id) %><br/>
-<%end -%>

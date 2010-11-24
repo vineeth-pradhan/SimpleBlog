@@ -1,7 +1,0 @@
-<div id='menu_items'>
-	<h1>Menu items</h1>
-<p><%= link_to("Users list", users_path)  if session[:user].is_admin? -%></p>
-<p><%= link_to("Blogs list", blog_posts_path) -%></p>
-<p><%= link_to("Categories list", categories_path) -%></p>
-<p><%= link_to("Tags list", tags_path) -%></p>
-</div>

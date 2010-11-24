@@ -1,2 +1,2 @@
 # TODO Operate on the page object
-page.alert 'THis is a test'
+page.insert_html :bottom,:show_comments,:object => @comment

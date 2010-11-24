@@ -8,11 +8,11 @@ class CommentsController < CustomisedCrudController
   end
   
   def new
-    @blog_post = BlogPost.find(params[:blog_post_id])
+    @blog_post=BlogPost.find(params[:blog_post_id])
     @comment = @blog_post.comments.build
     respond_to do |format|
       format.html
-      format.js
+      format.js{render :action => 'new'}
     end
   end
 

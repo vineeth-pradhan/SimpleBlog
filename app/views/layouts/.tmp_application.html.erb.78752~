@@ -10,8 +10,8 @@
 </head>
 <body>
   
-<p style="color: #2F4F2F;border:ridge;background-color:#90EE90;"><%= notice %></p>
-<p style="color: red"><%= alert %></p>
+<p style="color: green;border:thick;background-color:#D0D0D0 ;"><%= notice %></p>
+<p style="color: red;border:thick;background-color:#D0D0D0 ;"><%= alert %></p>
 <%  if session[:user] %>
 <%= link_to "Home", :controller => "menu", :action => "list" %> | <%=  link_to "Logout", session_path, :method=>:delete  -%>
 

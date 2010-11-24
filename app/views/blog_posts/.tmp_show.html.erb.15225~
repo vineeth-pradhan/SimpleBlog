@@ -4,7 +4,7 @@
 <%= @record.body  -%>
 </p>
 <% for category in @record.categories %>
-<%= link_to(category.title,blog_posts_path,:id=category.id)%>|
+<%= link_to(category.title,category_path(category))%>|
 <%end%>
 <h3><i>Comments:</i></h3>
 <div id ="show_comments">
@@ -17,10 +17,12 @@
 </div>
 
 
-
-<div id ="comment_button">
-<%= link_to('New Comment', new_blog_post_comment_path(@record)) -%>
+<!--<div id ="comment_button">
+<%= link_to_remote('New Comment',:url=>new_blog_post_comment_path(@record), :html => { :id => 'new_comment' }) -%>
 </div>
-
+-->
+<div id ="comment_button">
+<%= link_to_remote('New Comment',:url=>new_blog_post_comment_path(@record)) -%>
+</div>
 
 <%= link_to 'Back', blog_posts_path -%>
