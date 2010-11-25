@@ -1,0 +1,2 @@
+<%= text_area_tag :content,nil,:cols=>"30",:rows=>"5" %><br />
+<%= submit_tag('Comment') %> <a href="#" onclick="$('comment').fade();$('new_comment_link').appear();" >Cancel</a>

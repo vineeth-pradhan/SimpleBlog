@@ -7,12 +7,8 @@
 <%= link_to(category.title,category_path(category))%>|
 <%end%>
 <h3><i>Comments:</i></h3>
-<div id ="show_comments">
-  <hr></hr>
-  <% for comment in @record.comments -%>
-  <%= comment.content %><br/>
-  <hr></hr>
-  <% end -%>
+<div id="showcomments">
+  <%= render :partial => '/comments/show', :object => @record.comments %><br />
 </div>
 
 <!--
@@ -22,15 +18,14 @@
 </div>
 
 -->
-<div id="comment" style="display:none;">
-	<%= form_tag blog_post_comments_path(@record) %>
-	<%= text_area_tag :comment,nil,:cols=>"30",:rows=>"5" %><br />
-	<%= submit_tag('Comment') %> <a href="#" onclick="$('comment').hide();$('new_comment_link').show();" >Cancel</a>
+<div id="new_comment" style="display:none;">
+	<% form_remote_tag :url=>{:controller=>'comments',:action=>'create',
+:blog_post_id=>@record.id,:user_id=>session[:user]}, :html=>{:id=>'comment_form'} do -%>
+	<%= render :partial => '/comments/form'%>
+	<% end %>
 </div>
 <div id="new_comment_link">
-<a href="#" onclick="$('comment').show();$('new_comment_link').hide();");>New comment</a> <br />	
+<a href="#" onclick="$('new_comment').appear();$('new_comment_link').fade();");>New comment</a> <br />	
 </div>
-<!--<%= link_to_remote('New comment', :url=> new_blog_post_comment_path(@record) \
-, :method => :get, :html => {:id => 'new_comment'})%> <br /> -->
 
 <%= link_to 'Back', blog_posts_path -%>

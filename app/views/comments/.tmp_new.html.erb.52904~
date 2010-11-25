@@ -1,9 +1,0 @@
-
-<div id ="new_comment">
-  <% form_for [@blog_post,@comment] do |f|-%>
-
-  <%= f.text_area :content -%><br/>
-  <%= f.submit "Submit"-%>
-
-  <% end -%>
-</div>

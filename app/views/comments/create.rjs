@@ -1,0 +1,1 @@
+page.replace_html :showcomments, :partial => 'show', :object=>@comment
