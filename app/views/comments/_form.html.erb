@@ -1,4 +1,4 @@
-<div id="comment_box">
+<div id="comment_form">
 <%= text_area_tag :content,nil%><br />
-<%= submit_tag('Comment',:onclick=>"$('new_comment').fade();$('new_comment_link').appear();") %> <a href="#" onclick="$('new_comment').fade();$('new_comment_link').appear();" >Cancel</a>
+<%= submit_tag('Comment',:onclick=>"Effect.SlideUp('new_comment',{duration: 0.1});Effect.Appear('new_comment_link',{duration:0.1})",:class=>'ovalbutton') %> <a href="#" onclick="Effect.SlideUp('new_comment',{duration:0.1});Effect.Appear('new_comment_link');return false" >Cancel</a>
 </div>

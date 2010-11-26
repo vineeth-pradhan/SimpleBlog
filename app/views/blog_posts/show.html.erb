@@ -8,7 +8,7 @@
 <%end%>
 <h3><i>Comments:</i></h3>
 <div id="showcomments">
-  <%= render :partial => '/comments/show', :object => @record.comments %><br />
+  <%= render :partial => '/comments/show', :collection => @record.comments %><br />
 </div>
 
 <!--
@@ -25,7 +25,7 @@
 	<% end %>
 </div>
 <div id="new_comment_link">
-<a href="#" onclick="$('new_comment').slideDown();$('new_comment_link').fade();");>New comment</a> <br />	
+<a href="#" onclick="Effect.SlideDown('new_comment',{duration:0.1});Effect.Fade('new_comment_link'); return false;");>New comment</a> <br />	
 </div>
 
 <%= link_to 'Back', blog_posts_path -%>
