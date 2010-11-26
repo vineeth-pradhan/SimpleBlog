@@ -11,13 +11,6 @@
   <%= render :partial => '/comments/show', :collection => @record.comments %><br />
 </div>
 
-<!--
-
-<div id ="comment_button">
-<%= link_to('New Comment',new_blog_post_comment_path(@record)) -%>
-</div>
-
--->
 <div id="new_comment" style="display:none;">
 	<% form_remote_tag :url=>{:controller=>'comments',:action=>'create',
 :blog_post_id=>@record.id,:user_id=>session[:user]}, :html=>{:id=>'comment_form'} do -%>
@@ -25,7 +18,7 @@
 	<% end %>
 </div>
 <div id="new_comment_link">
-<a href="#" onclick="Effect.SlideDown('new_comment',{duration:0.1});Effect.Fade('new_comment_link'); return false;");>New comment</a> <br />	
+<a href="#" onclick="slideDownNewCommentBox();");>New comment</a> <br />	
 </div>
 
 <%= link_to 'Back', blog_posts_path -%>

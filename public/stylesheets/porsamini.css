@@ -15,7 +15,7 @@
 	font-family:"Comic Sans MS";
 }
 
-.main_class{
+#blog_post_listing{
 	background-color:#BCD4E6;
 	opacity:0.6;
 }
@@ -24,11 +24,6 @@
 	padding:10px;
 	background-image: url('../images/header.jpg');
 }
-
-#comment_form{
-	
-}
-
 
 body{
 	padding-right:150px;

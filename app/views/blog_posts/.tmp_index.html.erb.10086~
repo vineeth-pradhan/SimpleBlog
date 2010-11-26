@@ -1,0 +1,5 @@
+<div class='header'><h1><%= "Index for Blog Posts" %></h1>
+</div>
+<hr />
+<%= render :partial => 'blog_post', :collection => @records %>
+<%= link_to "Create new #{@records[0].class}", new_blog_post_path -%>

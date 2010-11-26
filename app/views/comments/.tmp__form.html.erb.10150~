@@ -1,5 +1,5 @@
 <div id="comment_form">
 <%= text_area_tag :content,nil%><br />
 <%= submit_tag('Comment',:onclick=>"commentBoxSlideUp();") %>
-<%= link_to('Cancel','#',:onclick=>"commentBoxSlideUp();") %> 
+<%= link_to('Cancel',:onclick=>'commentBoxSlideUp();') %>
 </div>

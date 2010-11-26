@@ -1,3 +1,5 @@
 page.insert_html :bottom, :showcomments, :partial => 'show', :object=>@comment
 page[:comment_form].reset
+page.replace_html :notice, notice if notice
+page.replace_html :alert, alert if alert
 flash.discard
