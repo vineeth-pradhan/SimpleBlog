@@ -1,3 +1,3 @@
 class Category < ActiveRecord::Base
-  belongs_to :blog_post
+  has_and_belongs_to_many :blog_posts, :join_table => 'blog_posts_categories'
 end

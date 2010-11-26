@@ -25,7 +25,7 @@
 	<% end %>
 </div>
 <div id="new_comment_link">
-<a href="#" onclick="$('new_comment').slideDown();$('new_comment_link').fade();");>New comment</a> <br />	
+<a href="#" onclick="$('new_comment').appear();$('new_comment_link').fade();");>New comment</a> <br />	
 </div>
 
 <%= link_to 'Back', blog_posts_path -%>

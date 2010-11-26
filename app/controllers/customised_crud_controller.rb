@@ -26,10 +26,6 @@ class CustomisedCrudController < ApplicationController
 
   def show
     @record = @model_class.constantize.find(params[:id])
-    respond_to {|format|
-    format.html
-    format.js
-    }
   end
 
   def update

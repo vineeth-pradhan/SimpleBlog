@@ -14,6 +14,24 @@
 	color:black;
 	font-family:"Comic Sans MS";
 }
-a:link{
-	color:red
+
+.main_class{
+	background-color:#BCD4E6;
+	opacity:0.6;
+}
+.header{
+	color:black;
+	padding:10px;
+	background-image: url('../images/header.jpg');
+}
+
+#comment_form{
+	
+}
+
+body{
+	padding-right:150px;
+	padding-left:150px;
+	background-image: url('../images/blueswirly.jpg');
+	
 }

@@ -1,3 +1,8 @@
-<h1>Category#show</h1>
-<p>Title: <%= @record.title %></p>
-<p>Description: <%= @record.description %></p>
+<div class='header'><h1><%= "Showing blog posts category" %></h1></div>
+
+<hr />
+<div class="main_class">
+<%= render :partial => '/blog_posts/blog_post', :collection => @records %>
+<%= link_to "Create new #{@records[0].class}", new_blog_post_path -%>
+</div>
+</div>

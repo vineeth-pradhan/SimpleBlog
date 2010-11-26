@@ -1,0 +1,1 @@
+ <strong><%= link_to(blog_post.title, blog_post_path(blog_post)) -%></strong> %>

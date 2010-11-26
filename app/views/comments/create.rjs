@@ -1,1 +1,2 @@
 page.replace_html :showcomments, :partial => 'show', :object=>@comment
+page[:comment_form].reset
