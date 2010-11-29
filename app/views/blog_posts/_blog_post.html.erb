@@ -2,7 +2,7 @@
 <table id="blog_post_listing">
  <tr>
   <td width="350"><strong><%= link_to(blog_post.title, blog_post_path(blog_post)) -%></strong></td>
-  <td><%= link_to "edit", :action => 'edit', :id => blog_post.id  -%></td>
+  <td><%= link_to "edit", edit_blog_post_path(blog_post)  -%></td>
   <td><%= link_to "destroy", blog_post_path(blog_post), :method => :delete, :confirm => "Are you sure?" -%></td>
  </tr>
 </table>

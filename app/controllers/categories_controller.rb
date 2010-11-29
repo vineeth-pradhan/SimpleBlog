@@ -16,8 +16,7 @@ class CategoriesController < CustomisedCrudController
   end
 
   def show
-    @records = Category.find(params[:id]).blog_posts
-    render :layout => 'application', :text => "No posts under this Category" if @records == []
+    @records = Category.find(params[:id])
   end
 
   def update
@@ -34,5 +33,6 @@ class CategoriesController < CustomisedCrudController
 
   def set_properties
     @model_class = "Category"
+    @params_name = "category"
   end
 end

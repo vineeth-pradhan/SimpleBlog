@@ -29,6 +29,7 @@ class CustomisedCrudController < ApplicationController
   end
 
   def update
+    params[:blog_post][:category_ids] ||= []
     @record = @model_class.constantize.find(params[:id])
     if @record.update_attributes!(params[:blog_post])
       flash[:notice] = "Record updated"

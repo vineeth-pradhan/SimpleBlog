@@ -1,6 +1,6 @@
 <h1>Category#index</h1>
 <% for record in @records -%>
-  <%= link_to record.title.capitalize, category_url(record) %><br/>
+  <%= link_to record.title, category_path(record) %><br/>
 <%end -%>
 <br />
 <br />

@@ -2,7 +2,8 @@
 
 <hr />
 <div class="main_class">
-<%= render :partial => '/blog_posts/blog_post', :collection => @records %>
-<%= link_to "Create new #{@records[0].class}", new_blog_post_path -%>
+	<%= "No posts under this category" if @records.blog_posts == [] %>
+	<%= render :partial => '/blog_posts/blog_post', :collection => @records.blog_posts %>
+	<%= link_to "Create new #{@records[0].class}", new_blog_post_path unless @records.blog_posts == [] -%>
 </div>
 </div>

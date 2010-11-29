@@ -4,7 +4,7 @@ def load_user
 puts 'Loading users...'
 FasterCSV.foreach("#{RAILS_ROOT}/lib/csv/load_user.csv") { |row|
 User.create!(:id=>row[0], :username=>row[1],:password=>row[2],:first_name=>row[3], \
-    :last_name=>row[4], :email=>row[5])
+    :last_name=>row[4], :email=>row[5], :is_admin => row[5])
 }
 end
 

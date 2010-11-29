@@ -21,8 +21,7 @@
 
 <% end %>
 	</table>
-	<p><%= submit_tag('Update users')%>|
-	<%= link_to 'Printable report(PDF)',users_path(:format=>'pdf') %></p>
+	<%= submit_tag('Update users')%>
 <% end %>
 	 <br />
 <%= link_to('Create new user', new_user_path) %>

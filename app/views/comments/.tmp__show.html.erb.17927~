@@ -1,3 +1,0 @@
-<% for comment in @record.comments %>
-<%= comment.content %><br />
-<%end%>
