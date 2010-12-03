@@ -1,9 +1,9 @@
 <% form_for(@record) do |f| -%>
-<%= f.error_messages -%>
+<%= error_messages_for :blog_post -%>
 
 <p>
   <%=  f.label :title -%><br />
-  <%=  f.text_field :title -%>
+  <%= f.text_field :title -%>
 </p>
 
 <p>

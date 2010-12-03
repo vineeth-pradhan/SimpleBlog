@@ -1,7 +1,7 @@
 <h1>BlogPost#show</h1>
-<h2>Title: <b><i><%= @record.title  -%></i></b></h2>
+<h2>Title: <b><i><%= h(@record.title)  -%></i></b></h2>
 <p>
-<%= @record.body  -%>
+<%= h(@record.body)  -%>
 </p>
 <% for category in @record.categories %>
 <%= link_to(category.title,category_path(category))%>|

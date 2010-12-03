@@ -11,17 +11,20 @@ class CustomisedCrudController < ApplicationController
 
   def create
     @record = @model_class.constantize.new(params[@params_name])
-    if @record.save!
+    respond_to do |format|
+     if @record.save!
        flash[:notice] = "Record Created!"
-       if @model_class=="User"
-         redirect_to :controller=>"menu", :action => "list" #TODO: Try this -> render index
-       else
-         redirect_to :action => "index"
-       end        
-    else
-      flash[:error] = "New record creation failed"
-       redirect_to :action => "new"
+        if @model_class=="User"
+             format.html {render :controller => "menu", :action => 'list'}#TODO: Try this -> render index
+          else
+             format.html{renders :action => "index"}
+        end
+     else
+       format.html{flash[:error] = "New record creation failed"
+       render :action => "new"
+       }
     end
+   end
   end
 
   def show
