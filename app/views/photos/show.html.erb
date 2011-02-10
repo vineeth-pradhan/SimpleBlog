@@ -1,0 +1,48 @@
+<p>
+  <b>Caption:</b>
+  <%=h @photo.caption %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%=h @photo.size %>
+</p>
+
+<p>
+  <b>Content type:</b>
+  <%=h @photo.content_type %>
+</p>
+
+<p>
+  <b>Filename:</b>
+  <%=h @photo.filename %>
+</p>
+
+<p>
+  <b>Heighheight:</b>
+  <%=h @photo.height %>
+</p>
+
+<p>
+  <b>Width:</b>
+  <%=h @photo.width %>
+</p>
+
+<p>
+  <b>Parent:</b>
+  <%=h @photo.parent_id %>
+</p>
+
+<p>
+  <b>Thumbnail:</b>
+  <%=h @photo.thumbnail %>
+</p>
+
+<p>
+  <b>Album:</b>
+  <%=h @photo.album_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Back', photos_path %>

@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :albums
+
+  map.resources :photos
+
+  map.resources :albums
+
 
   #map.resources :test1s
   map.resources :blog_posts, :has_many => :comments

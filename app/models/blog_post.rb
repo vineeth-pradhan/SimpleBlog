@@ -1,5 +1,6 @@
 class BlogPost < ActiveRecord::Base
   has_many :comments
+  has_many :albums
   belongs_to :author
   has_and_belongs_to_many :categories, :join_table => 'blog_posts_categories'
   has_and_belongs_to_many :editors
